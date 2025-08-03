@@ -77,7 +77,7 @@ const handleDelete = (id: BaseKey) => {
                                     </button>
                                     <button
                                         className="btn btn-sm btn-outline-danger"
-                                        onClick={() => handleDelete(meal.id)}
+                                        onClick={() => handleDelete(meal.id!)}
                                     >
                                          Delete
                                     </button>

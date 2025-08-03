@@ -81,7 +81,7 @@ export const OrdersList: React.FC = () => {
                                     </button>
                                     <button
                                         className="btn btn-sm btn-outline-danger"
-                                        onClick={() => handleDelete(order.id)}
+                                        onClick={() => handleDelete(order.id!)}
                                     >
                                         Delete
                                     </button>

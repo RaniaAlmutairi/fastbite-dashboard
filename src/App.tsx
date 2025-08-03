@@ -5,7 +5,7 @@ import { MealsList } from "./pages/meals/list";
 import { MealsCreate } from "./pages/meals/create";
 import { MealsEdit } from "./pages/meals/edit";
 import { MealsShow } from "./pages/meals/show";
-import { CheckoutPage } from "./pages/customer/checkout";
+import { CheckoutPage } from "./pages/customer/Checkout";
 
 import { Login } from "./pages/auth/Login";
 import { RegisterCustomer } from "./pages/auth/RegisterCustomer";
