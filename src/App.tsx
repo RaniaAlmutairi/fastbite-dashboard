@@ -1,165 +1,70 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { DashboardLayout } from "./Layouts/DashboardLayout";
+import { MealsList } from "./pages/meals/list";
+import { MealsCreate } from "./pages/meals/create";
+import { MealsEdit } from "./pages/meals/edit";
+import { MealsShow } from "./pages/meals/show";
+import { CheckoutPage } from "./pages/customer/checkout";
 
-import {
-  AuthPage,
-  ErrorComponent,
-  ThemedLayoutV2,
-  ThemedSiderV2,
-  useNotificationProvider,
-} from "@refinedev/antd";
-import "@refinedev/antd/dist/reset.css";
+import { Login } from "./pages/auth/Login";
+import { RegisterCustomer } from "./pages/auth/RegisterCustomer";
 
-import routerBindings, {
-  CatchAllNavigate,
-  DocumentTitleHandler,
-  NavigateToResource,
-  UnsavedChangesNotifier,
-} from "@refinedev/react-router";
-import { dataProvider, liveProvider } from "@refinedev/supabase";
-import { App as AntdApp } from "antd";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
-import authProvider from "./authProvider";
-import { Header } from "./components/header";
-import { ColorModeContextProvider } from "./contexts/color-mode";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
-import { supabaseClient } from "./utility";
+import { MealsForCustomers } from "./pages/customer/MealsForCustomers";
+import { ThankYouPage } from "./pages/customer/ThankYouPage";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <GitHubBanner />
-      <RefineKbarProvider>
-        <ColorModeContextProvider>
-          <AntdApp>
-            <DevtoolsProvider>
-              <Refine
-                dataProvider={dataProvider(supabaseClient)}
-                liveProvider={liveProvider(supabaseClient)}
-                authProvider={authProvider}
-                routerProvider={routerBindings}
-                notificationProvider={useNotificationProvider}
-                resources={[
-                  {
-                    name: "blog_posts",
-                    list: "/blog-posts",
-                    create: "/blog-posts/create",
-                    edit: "/blog-posts/edit/:id",
-                    show: "/blog-posts/show/:id",
-                    meta: {
-                      canDelete: true,
-                    },
-                  },
-                  {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
-                    meta: {
-                      canDelete: true,
-                    },
-                  },
-                ]}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "AkZqLg-bAWyIK-oJKyEm",
-                }}
-              >
+import { Refine } from "@refinedev/core";
+import { dataProvider } from "@refinedev/supabase";
+import { supabaseClient } from "./utility/supabaseClient";
+
+import { OrdersList } from "./pages/orders/list";
+import { OrdersShow } from "./pages/orders/show";
+import { OrdersEdit } from "./pages/orders/edit";
+import { OrdersCreate } from "./pages/orders/create";
+
+
+const App: React.FC = () => {
+    return (
+        <Refine
+            dataProvider={dataProvider(supabaseClient)}
+            resources={[
+                {
+                    name: "meals",
+                    list: "/meals",
+                    create: "/meals/create",
+                    edit: "/meals/edit/:id",
+                    show: "/meals/show/:id",
+                },
+            ]}
+        >
+            <BrowserRouter>
                 <Routes>
-                  <Route
-                    element={
-                      <Authenticated
-                        key="authenticated-inner"
-                        fallback={<CatchAllNavigate to="/login" />}
-                      >
-                        <ThemedLayoutV2
-                          Header={Header}
-                          Sider={(props) => <ThemedSiderV2 {...props} fixed />}
-                        >
-                          <Outlet />
-                        </ThemedLayoutV2>
-                      </Authenticated>
-                    }
-                  >
-                    <Route
-                      index
-                      element={<NavigateToResource resource="blog_posts" />}
-                    />
-                    <Route path="/blog-posts">
-                      <Route index element={<BlogPostList />} />
-                      <Route path="create" element={<BlogPostCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} />
+                    {/* 👨‍💼 Admin Layout */}
+                    <Route element={<DashboardLayout />}>
+                        <Route index element={<MealsList />} />
+                        <Route path="/meals" element={<MealsList />} />
+                        <Route path="/meals/create" element={<MealsCreate />} />
+                        <Route path="/meals/edit/:id" element={<MealsEdit />} />
+                        <Route path="/meals/show/:id" element={<MealsShow />} />
+                        <Route path="/orders" element={<OrdersList />} />
+                        <Route path="/orders/create" element={<OrdersCreate />} />
+                        <Route path="/orders/show/:id" element={<OrdersShow />} />
+                        <Route path="/orders/edit/:id" element={<OrdersEdit />} />
                     </Route>
-                    <Route path="/categories">
-                      <Route index element={<CategoryList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
-                      <Route path="show/:id" element={<CategoryShow />} />
-                    </Route>
-                    <Route path="*" element={<ErrorComponent />} />
-                  </Route>
-                  <Route
-                    element={
-                      <Authenticated
-                        key="authenticated-outer"
-                        fallback={<Outlet />}
-                      >
-                        <NavigateToResource />
-                      </Authenticated>
-                    }
-                  >
-                    <Route
-                      path="/login"
-                      element={
-                        <AuthPage
-                          type="login"
-                          formProps={{
-                            initialValues: {
-                              email: "info@refine.dev",
-                              password: "refine-supabase",
-                            },
-                          }}
-                        />
-                      }
-                    />
-                    <Route
-                      path="/register"
-                      element={<AuthPage type="register" />}
-                    />
-                    <Route
-                      path="/forgot-password"
-                      element={<AuthPage type="forgotPassword" />}
-                    />
-                  </Route>
-                </Routes>
 
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
-          </AntdApp>
-        </ColorModeContextProvider>
-      </RefineKbarProvider>
-    </BrowserRouter>
-  );
-}
+                    {/* 👥 Customer Public Pages (بدون لوحة تحكم) */}
+                    <Route path="/menu" element={<MealsForCustomers />} />
+                    <Route path="/customer/checkout" element={<CheckoutPage />} />
+                    <Route path="/customer/thanks" element={<ThankYouPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<RegisterCustomer />} />
+
+                    
+
+                </Routes>
+            </BrowserRouter>
+        </Refine>
+    );
+};
 
 export default App;

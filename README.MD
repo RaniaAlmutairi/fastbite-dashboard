@@ -1,48 +1,104 @@
-# fastbite-dashboard
+# FastBite — Food Ordering Admin & Customer System
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
-    </a>
-</div>
-<br/>
+FastBite is a modern React + Supabase-based web application for managing meals, orders, and users. It supports both admin and customer interfaces, allowing efficient order creation, meal management, and customer interaction.
 
-This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
+---
 
-## Getting Started
+## Features
 
-A React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility ✨
+### Admin Dashboard
+- View, create, edit, and delete meals
+- Categorize meals
+- View and manage orders
+- Role-based navigation (admin vs customer)
 
-Refine's hooks and components simplifies the development process and eliminates the repetitive tasks by providing industry-standard solutions for crucial aspects of a project, including authentication, access control, routing, networking, state management, and i18n.
+### Customer Features
+- Customer registration and login
+- Browse meals menu
+- Place orders
+- View cart
 
-## Available Scripts
+---
 
-### Running the development server.
+## Technologies Used
+
+- React (with TypeScript)
+- Supabase (authentication + database)
+- Refine.dev (admin panel)
+- React Bootstrap (UI components)
+- React Router DOM (navigation and routing)
+
+---
+
+## Pages Structure
+
+### Admin Pages
+- `/meals` — List and manage meals
+- `/meals/create`, `/meals/edit/:id` — Create and edit meals
+- `/orders` — Manage customer orders
+- `/orders/create`, `/orders/edit/:id` — Create and update orders
+
+### Customer Pages
+- `/register-customer` — Customer registration
+- `/login` — Login
+- `/menu` — Browse available meals
+- `/cart` — Cart page and logout
+
+### Shared
+- `/` — Role-based redirect
+- `/auth-redirect` — Determines user role and redirects accordingly
+
+---
+
+## Authentication
+
+- Supabase Auth is used for user registration and login.
+- Each new user is added to the `profiles` table with their role (`admin` or `customer`).
+- After login, users are redirected to pages based on their assigned role.
+
+> Note: Authentication, access control, and session management will be improved in future updates. it is not working now.
+
+---
+
+## Database Tables (Supabase)
+
+### profiles
+
+| Column   | Type   | Description              |
+|----------|--------|--------------------------|
+| id       | UUID   | Supabase Auth user ID    |
+| name     | text   | Full name                |
+| email    | text   | User email               |
+| phone    | text   | Phone number             |
+| role     | text   | `admin` or `customer`    |
+
+### meals
+
+| Column      | Type   |
+|-------------|--------|
+| id          | UUID   |
+| name        | text   |
+| price       | number |
+| category    | text   |
+| description | text   |
+| image       | text (URL) |
+
+### orders
+
+| Column   | Type |
+|----------|------|
+| id       | UUID |
+| name     | text |
+| address  | text |
+| phone    | text |
+| items    | JSON |
+
+---
+
+## Running Locally
 
 ```bash
-    npm run dev
-```
-
-### Building for production.
-
-```bash
-    npm run build
-```
-
-### Running the production server.
-
-```bash
-    npm run start
-```
-
-## Learn More
-
-To learn more about **Refine**, please check out the [Documentation](https://refine.dev/docs)
-
-- **Supabase Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
-- **Ant Design** [Docs](https://refine.dev/docs/ui-frameworks/antd/tutorial/)
-- **React Router** [Docs](https://refine.dev/docs/core/providers/router-provider/)
-
-## License
-
-MIT
+git clone https://github.com/RaniaAlmutairi/fastbite-dashboard.git
+cd fastbite
+npm install
+npm start
