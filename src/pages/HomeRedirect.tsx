@@ -40,5 +40,5 @@ export const HomeRedirect = () => {
         fetchRoleAndRedirect();
     }, [navigate]);
 
-    return <p style={{ textAlign: "center", marginTop: "100px" }}>🔄 جاري التوجيه...</p>;
+    return <p style={{ textAlign: "center", marginTop: "100px" }}> جاري التوجيه...</p>;
 };
