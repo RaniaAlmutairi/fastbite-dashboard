@@ -39,7 +39,7 @@ const App: React.FC = () => {
         >
             <BrowserRouter>
                 <Routes>
-                    {/* 👨‍💼 Admin Layout */}
+                    {/*  Admin Layout */}
                     <Route element={<DashboardLayout />}>
                         <Route index element={<MealsList />} />
                         <Route path="/meals" element={<MealsList />} />
@@ -52,7 +52,7 @@ const App: React.FC = () => {
                         <Route path="/orders/edit/:id" element={<OrdersEdit />} />
                     </Route>
 
-                    {/* 👥 Customer Public Pages (بدون لوحة تحكم) */}
+                    {/* Customer Public Pages*/}
                     <Route path="/menu" element={<MealsForCustomers />} />
                     <Route path="/customer/checkout" element={<CheckoutPage />} />
                     <Route path="/customer/thanks" element={<ThankYouPage />} />
