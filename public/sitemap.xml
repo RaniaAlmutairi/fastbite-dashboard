@@ -8,6 +8,7 @@
   <url><loc>https://fastbite-app.netlify.app/menu</loc></url>
   <url><loc>https://fastbite-app.netlify.app/customer/checkout</loc></url>
   <url><loc>https://fastbite-app.netlify.app/customer/thanks</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/menu</loc></url>
 
   <!-- Admin (Protected) Pages -->
   <url><loc>https://fastbite-app.netlify.app/meals</loc></url>
