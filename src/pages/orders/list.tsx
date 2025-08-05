@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+
 import {
     useTable,
     useDelete,
@@ -6,6 +8,10 @@ import {
     BaseKey,
 } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
+<Helmet>
+  <title>FastBite | Orders Dashboard</title>
+  <meta name="description" content="Review and manage all customer orders in the admin dashboard." />
+</Helmet>
 
 export const OrdersList: React.FC = () => {
     const { tableQueryResult } = useTable({ resource: "orders" });

@@ -2,6 +2,13 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useShow } from "@refinedev/core";
 import { Card, Button, Spinner, ListGroup } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Order Details</title>
+  <meta name="description" content="See complete information about a specific order in the admin dashboard." />
+</Helmet>
+
 
 export const OrdersShow: React.FC = () => {
     const { id } = useParams();

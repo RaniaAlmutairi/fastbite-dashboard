@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+<Helmet>
+  <title>FastBite | Edit Order</title>
+  <meta name="description" content="Edit details of an existing customer order in the admin panel." />
+</Helmet>
+
 import {
     useShow,
     useUpdate,

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useList } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+<Helmet>
+  <title>FastBite | Menu</title>
+  <meta name="description" content="Explore delicious meals and place your order quickly from our online menu." />
+</Helmet>
 
 import {
     Container,

@@ -2,6 +2,12 @@ import React from "react";
 import { Create, useForm } from "@refinedev/antd";
 import { useNotification, useNavigation } from "@refinedev/core"; 
 import { Form, Input } from "antd";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Add New Meal</title>
+  <meta name="description" content="Create and add a new meal to the FastBite menu from the admin dashboard." />
+</Helmet>
 
 export const MealsCreate: React.FC = () => {
     const { open } = useNotification(); 

@@ -2,6 +2,12 @@ import React from "react";
 import { Edit, useForm } from "@refinedev/antd";
 import { Form, Input } from "antd";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Edit Meal</title>
+  <meta name="description" content="Edit and update existing meal details in the FastBite admin panel." />
+</Helmet>
 
 export const MealsEdit: React.FC = () => {
     const { id } = useParams();

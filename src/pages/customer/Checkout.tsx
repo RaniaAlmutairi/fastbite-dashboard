@@ -10,6 +10,12 @@ import {
 } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 import { supabaseClient } from "../../utility/supabaseClient";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Checkout</title>
+  <meta name="description" content="Complete your order by providing delivery and payment details on the checkout page." />
+</Helmet>
 
 export const CheckoutPage = () => {
     const navigate = useNavigate();

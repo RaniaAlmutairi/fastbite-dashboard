@@ -10,6 +10,12 @@ import {
     Row,
     Col,
 } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Thank You</title>
+  <meta name="description" content="Thank you for your order! We’re preparing your meal and it will be delivered soon." />
+</Helmet>
 
 export const ThankYouPage = () => {
     const location = useLocation();

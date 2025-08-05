@@ -10,6 +10,12 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { supabaseClient } from "../../utility/supabaseClient";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Register</title>
+  <meta name="description" content="Sign up for a FastBite account and start ordering your favorite meals." />
+</Helmet>
 
 export const RegisterCustomer = () => {
     const navigate = useNavigate();

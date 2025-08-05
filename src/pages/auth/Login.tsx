@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabaseClient } from "../../utility/supabaseClient";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+<Helmet>
+  <title>FastBite | Login</title>
+  <meta name="description" content="Login to your FastBite account to view orders, meals, and manage your profile." />
+</Helmet>
 
 export const Login = () => {
     const navigate = useNavigate();

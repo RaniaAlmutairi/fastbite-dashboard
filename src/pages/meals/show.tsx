@@ -4,6 +4,12 @@ import { Show } from "@refinedev/antd";
 
 import { Descriptions, Image } from "antd";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <title>FastBite | Meal Details</title>
+  <meta name="description" content="View detailed information about a specific meal in the admin panel." />
+</Helmet>
 
 export const MealsShow: React.FC = () => {
     const { id } = useParams();

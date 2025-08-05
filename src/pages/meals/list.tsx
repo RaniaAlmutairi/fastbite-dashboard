@@ -1,6 +1,11 @@
 import React from "react";
 import { useTable, useDelete, useNotification, BaseKey } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+<Helmet>
+  <title>FastBite | Meals Dashboard</title>
+  <meta name="description" content="View, manage, and update all available meals in the FastBite admin panel." />
+</Helmet>
 
 export const MealsList: React.FC = () => {
     const { tableQueryResult } = useTable({ resource: "meals" });

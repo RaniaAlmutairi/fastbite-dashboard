@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+<Helmet>
+  <title>FastBite | Create Order</title>
+  <meta name="description" content="Manually create a new order for customers in the admin area." />
+</Helmet>
+
 import {
     useCreate,
     useNotification,

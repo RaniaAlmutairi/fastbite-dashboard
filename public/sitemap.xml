@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Public Pages -->
+  <url><loc>https://fastbite-app.netlify.app/</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/login</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/register</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/menu</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/customer/checkout</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/customer/thanks</loc></url>
+
+  <!-- Admin (Protected) Pages -->
+  <url><loc>https://fastbite-app.netlify.app/meals</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/meals/create</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/meals/edit/123</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/meals/show/123</loc></url>
+
+  <url><loc>https://fastbite-app.netlify.app/orders</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/orders/create</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/orders/edit/123</loc></url>
+  <url><loc>https://fastbite-app.netlify.app/orders/show/123</loc></url>
+
+</urlset>
